@@ -4,13 +4,16 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage:{
-      'custom-image':"url('./images/banner.png')"
+      'custom-image':"url('./images/banner.png')",
+       'second-image':"url('./images/slider-1.jpg')"
     },
     colors:{
       customBrown:'#A97D52',
     },
   },
   },
-  plugins: [],
+  plugins: [
+    require('daisyui'),
+  ],
 }
 
