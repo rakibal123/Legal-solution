@@ -10,23 +10,23 @@
 <body class="bg-white text-black">
     <header>
         <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <nav class="flex justify-between items-center py-5 mb-8 lg:mb-12">
+            <nav class="flex justify-between items-center py-5 mb-8 lg:mb-12 relative">
                 <div>
                     <img src="./images/logo2.png" class="h-10 sm:h-12 w-auto" alt="JusticeHome">
                 </div>
-                <div class="hidden lg:block">
-                    <ul class="flex gap-8 text-lg">
+                <div id="nav-menu" class="hidden lg:block absolute lg:static top-full left-0 w-full lg:w-auto bg-white lg:bg-transparent shadow-xl lg:shadow-none p-6 lg:p-0 z-50 rounded-lg">
+                    <ul class="flex flex-col lg:flex-row gap-6 lg:gap-8 text-lg">
                         <li class="whitespace-nowrap"><a href="#">Home</a></li>
-                        <li class="flex items-center cursor-pointer whitespace-nowrap"><a href="#">Services</a>
+                        <li class="flex items-center justify-between cursor-pointer whitespace-nowrap"><a href="#">Services</a>
                            <span class="ml-2 text-sm"><i class="fa-solid fa-angle-right"></i></span>
                         </li>
-                        <li class="flex items-center cursor-pointer whitespace-nowrap"><a href="#">Cases</a>
+                        <li class="flex items-center justify-between cursor-pointer whitespace-nowrap"><a href="#">Cases</a>
                             <span class="ml-2 text-sm"><i class="fa-solid fa-angle-right"></i></span>
                         </li>
-                        <li class="flex items-center cursor-pointer whitespace-nowrap"><a href="#">Blog</a>
+                        <li class="flex items-center justify-between cursor-pointer whitespace-nowrap"><a href="#">Blog</a>
                             <span class="ml-2 text-sm"><i class="fa-solid fa-angle-right"></i></span>
                         </li>
-                        <li class="flex items-center cursor-pointer whitespace-nowrap"><a href="#">Contact Us</a>
+                        <li class="flex items-center justify-between cursor-pointer whitespace-nowrap"><a href="#">Contact Us</a>
                             <span class="ml-2 text-sm"><i class="fa-solid fa-angle-right"></i></span>
                         </li>
                     </ul>
@@ -36,7 +36,7 @@
                 </div>
                 <!-- Mobile Menu Button -->
                 <div class="lg:hidden flex items-center">
-                    <button class="text-3xl text-gray-800"><i class="fa-solid fa-bars"></i></button>
+                    <button id="mobile-menu-btn" class="text-3xl text-gray-800"><i class="fa-solid fa-bars"></i></button>
                 </div>
             </nav>
 
@@ -113,19 +113,19 @@ suffered alteration in some form, by injected humour.
         <!-- adding carousal here you goooooooooo -->
          <div class="mt-12 lg:mt-20 bg-red-50">
             <div class="text-white relative text-center bg-second-image min-h-[430px] py-16 px-4 sm:px-12 rounded-xl bg-cover bg-center">
-                <p><img src="./images/man-picture.jpg" class="w-20 mb-5 mx-auto rounded-full" alt=""></p>
-                <h2 class="text-2xl mb-2 font-bold">Awlad Hossain</h2>
-                <p class="mb-6">UI/UX design</p>
-                <p class="max-w-4xl mx-auto text-zinc-300 mb-5">Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin
+                <p><img id="carousel-img" src="./images/man-picture.jpg" class="w-20 mb-5 mx-auto rounded-full" alt=""></p>
+                <h2 id="carousel-name" class="text-2xl mb-2 font-bold">Awlad Hossain</h2>
+                <p id="carousel-role" class="mb-6">UI/UX design</p>
+                <p id="carousel-text" class="max-w-4xl mx-auto text-zinc-300 mb-5 min-h-[120px] transition-opacity duration-300">Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin
                     literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney
                     College in Virginia, looked up one of the more obscure Latin words, consectetur.</p>
 
-                <span class="hidden md:block absolute top-1/2 -translate-y-1/2 cursor-pointer left-10 text-3xl"><i class="fa-solid fa-angle-left"></i></span>
-                <span class="hidden md:block absolute top-1/2 -translate-y-1/2 cursor-pointer right-10 text-3xl"><i class="fa-solid fa-angle-right"></i></span>
-                <div class="flex gap-2 justify-center mt-8">
-                    <p class="border-b-4 w-12 border-gray-500"></p>
-                    <p class="border-b-4 w-12 border-white"></p>
-                    <p class="border-b-4 w-12 border-gray-500"></p>
+                <span id="carousel-prev" class="hidden md:block absolute top-1/2 -translate-y-1/2 cursor-pointer left-10 text-3xl hover:text-gray-300 transition-colors p-4"><i class="fa-solid fa-angle-left"></i></span>
+                <span id="carousel-next" class="hidden md:block absolute top-1/2 -translate-y-1/2 cursor-pointer right-10 text-3xl hover:text-gray-300 transition-colors p-4"><i class="fa-solid fa-angle-right"></i></span>
+                <div class="flex gap-2 justify-center mt-8" id="carousel-dots">
+                    <p class="border-b-4 w-12 border-white cursor-pointer transition-colors"></p>
+                    <p class="border-b-4 w-12 border-gray-500 cursor-pointer transition-colors"></p>
+                    <p class="border-b-4 w-12 border-gray-500 cursor-pointer transition-colors"></p>
                 </div>
                 
             </div>
@@ -290,5 +290,86 @@ suffered alteration in some form, by injected humour.
         </section>
       </footer>
     
+    <script>
+        // Mobile Menu Toggle
+        const mobileBtn = document.getElementById('mobile-menu-btn');
+        const navMenu = document.getElementById('nav-menu');
+        
+        mobileBtn.addEventListener('click', () => {
+            navMenu.classList.toggle('hidden');
+        });
+
+        // Carousel Logic
+        const reviews = [
+            {
+                name: "Awlad Hossain",
+                role: "UI/UX design",
+                text: "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur.",
+                img: "./images/man-picture.jpg"
+            },
+            {
+                name: "Salma Begum",
+                role: "Web Developer",
+                text: "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour. It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
+                img: "./images/man-picture.jpg"
+            },
+            {
+                name: "Rakib Ali",
+                role: "Product Manager",
+                text: "The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from 'de Finibus Bonorum et Malorum' by Cicero are also reproduced in their exact original form.",
+                img: "./images/man-picture.jpg"
+            }
+        ];
+
+        let currentIndex = 0;
+        
+        const cImg = document.getElementById('carousel-img');
+        const cName = document.getElementById('carousel-name');
+        const cRole = document.getElementById('carousel-role');
+        const cText = document.getElementById('carousel-text');
+        const dots = document.getElementById('carousel-dots').children;
+
+        function updateCarousel(index) {
+            // Fade out effect
+            cText.style.opacity = 0;
+            setTimeout(() => {
+                const review = reviews[index];
+                cImg.src = review.img;
+                cName.textContent = review.name;
+                cRole.textContent = review.role;
+                cText.textContent = review.text;
+
+                // Update dots
+                for (let i = 0; i < dots.length; i++) {
+                    if (i === index) {
+                        dots[i].classList.replace('border-gray-500', 'border-white');
+                    } else {
+                        dots[i].classList.replace('border-white', 'border-gray-500');
+                    }
+                }
+                
+                // Fade in effect
+                cText.style.opacity = 1;
+            }, 150); // small delay for animation
+        }
+
+        document.getElementById('carousel-prev').addEventListener('click', () => {
+            currentIndex = (currentIndex > 0) ? currentIndex - 1 : reviews.length - 1;
+            updateCarousel(currentIndex);
+        });
+
+        document.getElementById('carousel-next').addEventListener('click', () => {
+            currentIndex = (currentIndex < reviews.length - 1) ? currentIndex + 1 : 0;
+            updateCarousel(currentIndex);
+        });
+
+        // Add click events to dots
+        for (let i = 0; i < dots.length; i++) {
+            dots[i].addEventListener('click', () => {
+                currentIndex = i;
+                updateCarousel(currentIndex);
+            });
+        }
+    </script>
 </body>
 </html>
